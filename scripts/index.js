@@ -1,5 +1,6 @@
 import Slider from "./modules/slider.js";
 import Fullscreen from "./modules/fullscreen.js";
+import Weather from "./modules/weather.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     new Slider({
@@ -13,5 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
         hide: true,
         showWrapper: ".main",
         showComponent: ".slider",
+    });
+    new Weather({
+        wrapper: ".weather",
     });
 });

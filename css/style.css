@@ -219,11 +219,6 @@ ul {
     text-align: center;
     transition: 0.4s ease;
 }
-.weather-inner {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-}
 .weather-form {
     height: 60px;
     margin-bottom: 45px;
@@ -407,4 +402,26 @@ ul {
 
 .fullscreen--hide {
     width: 0;
+}
+
+.hidden {
+    display: none;
+}
+
+.weather-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.weather-inner {
+    max-width: 50%;
+    margin: 0 auto;
+}
+
+.weather-wrapper:last-child {
+    margin-top: 25px;
+}
+
+.weather-wind {
+    max-width: 60px;
 }
