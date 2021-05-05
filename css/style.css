@@ -149,7 +149,7 @@ ul {
 }
 .sidebar-main {
     padding-top: 30px;
-    min-height: calc(100vh - 132px);
+    min-height: calc(100vh - 160px);
 }
 .audio {
     align-items: center;
@@ -307,12 +307,14 @@ ul {
     background-image: url("../assets/svg/fullscreen-exit.svg");
 }
 .footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     width: 100%;
     max-width: 1400px;
     margin: 0 auto;
+}
+.footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .github {
