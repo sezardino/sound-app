@@ -37,7 +37,7 @@ class Weather {
             query = "warsaw";
         } else if (value) {
             query = value;
-        } else if (localStorage.getItem("city") === "undefined") {
+        } else if (localStorage.getItem("city") !== "undefined") {
             query = localStorage.getItem("city");
         }
         const response = await fetch(
