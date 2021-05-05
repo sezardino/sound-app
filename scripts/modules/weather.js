@@ -1,9 +1,13 @@
-// 3197999da6519518237b84ffaa787599
 class Weather {
     constructor(props) {
         this.wrapper = document.querySelector(props.wrapper);
         this.form = this.wrapper.querySelector(".weather-form");
         this.inner = this.wrapper.querySelector(".weather-inner");
+
+        this.form.querySelector("input").value =
+            localStorage.getItem("city") !== "undefined"
+                ? localStorage.getItem("city")
+                : "Warsaw";
 
         this.weatherTemp = this.inner.querySelector(".weather-temp");
         this.weatherIcon = this.inner.querySelector(".weather-icon");
@@ -16,7 +20,6 @@ class Weather {
     }
 
     displayData(data) {
-        console.log(data);
         const iconClass = `weather-icon owf owf-${data.weather[0].id}`;
 
         this.inner.classList.remove("hidden");
@@ -28,13 +31,22 @@ class Weather {
         this.windSpeed.textContent = data.wind.speed;
     }
 
-    async request(value = "warsaw") {
+    async request(value) {
+        let query;
+        if (!value && localStorage.getItem("city") === "undefined") {
+            query = "warsaw";
+        } else if (value) {
+            query = value;
+        } else if (localStorage.getItem("city") === "undefined") {
+            query = localStorage.getItem("city");
+        }
         const response = await fetch(
-            `http://api.openweathermap.org/data/2.5/weather?q=${value}&units=metric&appid=3197999da6519518237b84ffaa787599`
+            `http://api.openweathermap.org/data/2.5/weather?q=${query}&units=metric&appid=3197999da6519518237b84ffaa787599`
         );
 
         if (response.ok) {
             this.displayData(await response.json());
+            localStorage.setItem("city", value);
         } else {
             throw new Error(response.statusText);
         }
